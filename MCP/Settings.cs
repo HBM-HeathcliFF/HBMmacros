@@ -9,6 +9,7 @@ namespace HBMmacros
         public Settings()
         {
             InitializeComponent();
+            ActiveControl = label1;
             tbd.Text = Program.delay.ToString();
             tbg1.Text = Program.g1AmmoCount.ToString();
             tbg2.Text = Program.g2AmmoCount.ToString();

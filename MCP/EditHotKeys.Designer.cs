@@ -58,6 +58,7 @@ namespace HBMmacros
             this.tbw1.Size = new System.Drawing.Size(73, 20);
             this.tbw1.TabIndex = 1;
             this.tbw1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbw1.Click += new System.EventHandler(this.tbw1_Click);
             // 
             // tbw2
             // 
@@ -67,6 +68,7 @@ namespace HBMmacros
             this.tbw2.Size = new System.Drawing.Size(73, 20);
             this.tbw2.TabIndex = 3;
             this.tbw2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbw2.Click += new System.EventHandler(this.tbw2_Click);
             // 
             // label2
             // 
@@ -85,6 +87,7 @@ namespace HBMmacros
             this.tbw3.Size = new System.Drawing.Size(73, 20);
             this.tbw3.TabIndex = 5;
             this.tbw3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbw3.Click += new System.EventHandler(this.tbw3_Click);
             // 
             // label3
             // 
@@ -103,6 +106,7 @@ namespace HBMmacros
             this.tbhm.Size = new System.Drawing.Size(73, 20);
             this.tbhm.TabIndex = 7;
             this.tbhm.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbhm.Click += new System.EventHandler(this.tbhm_Click);
             // 
             // label4
             // 
