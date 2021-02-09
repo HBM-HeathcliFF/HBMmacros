@@ -16,38 +16,20 @@ namespace HBMmacros
 
         private void tb_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Control)
+            if (e.Control) PrintHotKey(e, "Ctrl+");
+            else if (e.Alt) PrintHotKey(e, "Alt+");
+            else if (e.Shift) PrintHotKey(e, "Shift+");
+        }
+
+        private void PrintHotKey(KeyEventArgs e, string text)
+        {
+            selectedTB.Text = text;
+            if (e.KeyCode.ToString() != "ControlKey" && e.KeyCode.ToString() != "Menu"
+                && e.KeyCode.ToString() != "ShiftKey")
             {
-                selectedTB.Text = "Ctrl+";
-                if (e.KeyCode.ToString() != "ControlKey" && e.KeyCode.ToString() != "Menu"
-                    && e.KeyCode.ToString() != "ShiftKey")
-                {
-                    selectedTB.Text += e.KeyCode.ToString();
-                    e.SuppressKeyPress = true;
-                    KeyDown -= tb_KeyDown;
-                }
-            }
-            else if (e.Alt)
-            {
-                selectedTB.Text = "Alt+";
-                if (e.KeyCode.ToString() != "ControlKey" && e.KeyCode.ToString() != "Menu"
-                    && e.KeyCode.ToString() != "ShiftKey")
-                {
-                    selectedTB.Text += e.KeyCode.ToString();
-                    e.SuppressKeyPress = true;
-                    KeyDown -= tb_KeyDown;
-                }
-            }
-            else if (e.Shift)
-            {
-                selectedTB.Text = "Shift+";
-                if (e.KeyCode.ToString() != "ControlKey" && e.KeyCode.ToString() != "Menu"
-                    && e.KeyCode.ToString() != "ShiftKey")
-                {
-                    selectedTB.Text += e.KeyCode.ToString();
-                    e.SuppressKeyPress = true;
-                    KeyDown -= tb_KeyDown;
-                }
+                selectedTB.Text += e.KeyCode.ToString(); //Плюсуем по кейкоду символ с библиотеки
+                e.SuppressKeyPress = true;
+                KeyDown -= tb_KeyDown;
             }
         }
 
