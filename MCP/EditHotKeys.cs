@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace HBMmacros
 {
@@ -12,6 +13,15 @@ namespace HBMmacros
             InitializeComponent();
             ActiveControl = label1;
             KeyPreview = true;
+            foreach (TextBox tb in panel1.Controls.OfType<TextBox>())
+            {
+                tb.Click += (s, e) =>
+                {
+                    tb.Text = "";
+                    selectedTB = tb;
+                    tb.KeyDown += tb_KeyDown;
+                };
+            }
         }
 
         private void tb_KeyDown(object sender, KeyEventArgs e)
@@ -31,34 +41,6 @@ namespace HBMmacros
                 e.SuppressKeyPress = true;
                 KeyDown -= tb_KeyDown;
             }
-        }
-
-        private void tbw1_Click(object sender, EventArgs e)
-        {
-            tbw1.Text = "";
-            selectedTB = tbw1;
-            tbw1.KeyDown += tb_KeyDown;
-        }
-
-        private void tbw2_Click(object sender, EventArgs e)
-        {
-            tbw2.Text = "";
-            selectedTB = tbw2;
-            tbw2.KeyDown += tb_KeyDown;
-        }
-
-        private void tbw3_Click(object sender, EventArgs e)
-        {
-            tbw3.Text = "";
-            selectedTB = tbw3;
-            tbw3.KeyDown += tb_KeyDown;
-        }
-
-        private void tbhm_Click(object sender, EventArgs e)
-        {
-            tbhm.Text = "";
-            selectedTB = tbhm;
-            tbhm.KeyDown += tb_KeyDown;
         }
 
         private void applyBtn_Click(object sender, EventArgs e)

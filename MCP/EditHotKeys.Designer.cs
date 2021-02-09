@@ -39,12 +39,14 @@ namespace HBMmacros
             this.tbhm = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.applyBtn = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 8);
+            this.label1.Location = new System.Drawing.Point(7, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(60, 13);
             this.label1.TabIndex = 0;
@@ -52,28 +54,26 @@ namespace HBMmacros
             // 
             // tbw1
             // 
-            this.tbw1.Location = new System.Drawing.Point(69, 6);
+            this.tbw1.Location = new System.Drawing.Point(67, 7);
             this.tbw1.Name = "tbw1";
             this.tbw1.ReadOnly = true;
             this.tbw1.Size = new System.Drawing.Size(73, 20);
             this.tbw1.TabIndex = 1;
             this.tbw1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.tbw1.Click += new System.EventHandler(this.tbw1_Click);
             // 
             // tbw2
             // 
-            this.tbw2.Location = new System.Drawing.Point(69, 27);
+            this.tbw2.Location = new System.Drawing.Point(67, 28);
             this.tbw2.Name = "tbw2";
             this.tbw2.ReadOnly = true;
             this.tbw2.Size = new System.Drawing.Size(73, 20);
             this.tbw2.TabIndex = 3;
             this.tbw2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.tbw2.Click += new System.EventHandler(this.tbw2_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 29);
+            this.label2.Location = new System.Drawing.Point(7, 30);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(60, 13);
             this.label2.TabIndex = 2;
@@ -81,18 +81,17 @@ namespace HBMmacros
             // 
             // tbw3
             // 
-            this.tbw3.Location = new System.Drawing.Point(69, 47);
+            this.tbw3.Location = new System.Drawing.Point(67, 48);
             this.tbw3.Name = "tbw3";
             this.tbw3.ReadOnly = true;
             this.tbw3.Size = new System.Drawing.Size(73, 20);
             this.tbw3.TabIndex = 5;
             this.tbw3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.tbw3.Click += new System.EventHandler(this.tbw3_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 50);
+            this.label3.Location = new System.Drawing.Point(7, 51);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(60, 13);
             this.label3.TabIndex = 4;
@@ -100,18 +99,17 @@ namespace HBMmacros
             // 
             // tbhm
             // 
-            this.tbhm.Location = new System.Drawing.Point(69, 68);
+            this.tbhm.Location = new System.Drawing.Point(67, 69);
             this.tbhm.Name = "tbhm";
             this.tbhm.ReadOnly = true;
             this.tbhm.Size = new System.Drawing.Size(73, 20);
             this.tbhm.TabIndex = 7;
             this.tbhm.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.tbhm.Click += new System.EventHandler(this.tbhm_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 70);
+            this.label4.Location = new System.Drawing.Point(4, 71);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(63, 13);
             this.label4.TabIndex = 6;
@@ -119,7 +117,7 @@ namespace HBMmacros
             // 
             // applyBtn
             // 
-            this.applyBtn.Location = new System.Drawing.Point(9, 94);
+            this.applyBtn.Location = new System.Drawing.Point(7, 95);
             this.applyBtn.Name = "applyBtn";
             this.applyBtn.Size = new System.Drawing.Size(133, 23);
             this.applyBtn.TabIndex = 8;
@@ -127,28 +125,37 @@ namespace HBMmacros
             this.applyBtn.UseVisualStyleBackColor = true;
             this.applyBtn.Click += new System.EventHandler(this.applyBtn_Click);
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.applyBtn);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.tbhm);
+            this.panel1.Controls.Add(this.tbw1);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.tbw3);
+            this.panel1.Controls.Add(this.tbw2);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Location = new System.Drawing.Point(1, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(153, 127);
+            this.panel1.TabIndex = 9;
+            // 
             // EditHotKeys
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(151, 125);
-            this.Controls.Add(this.applyBtn);
-            this.Controls.Add(this.tbhm);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.tbw3);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.tbw2);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.tbw1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(167, 163);
             this.MinimumSize = new System.Drawing.Size(167, 163);
             this.Name = "EditHotKeys";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -163,5 +170,6 @@ namespace HBMmacros
         private System.Windows.Forms.TextBox tbhm;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button applyBtn;
+        private System.Windows.Forms.Panel panel1;
     }
 }
