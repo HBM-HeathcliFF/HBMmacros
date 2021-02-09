@@ -56,7 +56,7 @@
             // 
             this.applyBtn.Location = new System.Drawing.Point(7, 103);
             this.applyBtn.Name = "applyBtn";
-            this.applyBtn.Size = new System.Drawing.Size(183, 24);
+            this.applyBtn.Size = new System.Drawing.Size(199, 24);
             this.applyBtn.TabIndex = 0;
             this.applyBtn.Text = "Apply changes";
             this.applyBtn.UseVisualStyleBackColor = true;
@@ -65,7 +65,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(98, 34);
+            this.label4.Location = new System.Drawing.Point(114, 34);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(71, 13);
             this.label4.TabIndex = 4;
@@ -73,7 +73,7 @@
             // 
             // tbd
             // 
-            this.tbd.Location = new System.Drawing.Point(101, 53);
+            this.tbd.Location = new System.Drawing.Point(117, 53);
             this.tbd.Name = "tbd";
             this.tbd.Size = new System.Drawing.Size(68, 20);
             this.tbd.TabIndex = 7;
@@ -81,7 +81,7 @@
             // rememberCB
             // 
             this.rememberCB.AutoSize = true;
-            this.rememberCB.Location = new System.Drawing.Point(196, 110);
+            this.rememberCB.Location = new System.Drawing.Point(212, 110);
             this.rememberCB.Name = "rememberCB";
             this.rememberCB.Size = new System.Drawing.Size(77, 17);
             this.rememberCB.TabIndex = 9;
@@ -92,7 +92,7 @@
             // healCB
             // 
             this.healCB.AutoSize = true;
-            this.healCB.Location = new System.Drawing.Point(101, 9);
+            this.healCB.Location = new System.Drawing.Point(117, 9);
             this.healCB.Name = "healCB";
             this.healCB.Size = new System.Drawing.Size(48, 17);
             this.healCB.TabIndex = 10;
@@ -102,7 +102,7 @@
             // mhealCB
             // 
             this.mhealCB.AutoSize = true;
-            this.mhealCB.Location = new System.Drawing.Point(145, 9);
+            this.mhealCB.Location = new System.Drawing.Point(161, 9);
             this.mhealCB.Name = "mhealCB";
             this.mhealCB.Size = new System.Drawing.Size(55, 17);
             this.mhealCB.TabIndex = 11;
@@ -179,45 +179,45 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(9, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(39, 13);
+            this.label1.Size = new System.Drawing.Size(60, 13);
             this.label1.TabIndex = 18;
-            this.label1.Text = "Gun 1:";
+            this.label1.Text = "Weapon 1:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(9, 35);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(39, 13);
+            this.label2.Size = new System.Drawing.Size(60, 13);
             this.label2.TabIndex = 19;
-            this.label2.Text = "Gun 2:";
+            this.label2.Text = "Weapon 2:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(9, 57);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(39, 13);
+            this.label3.Size = new System.Drawing.Size(60, 13);
             this.label3.TabIndex = 20;
-            this.label3.Text = "Gun 3:";
+            this.label3.Text = "Weapon 3:";
             // 
             // tbg1
             // 
-            this.tbg1.Location = new System.Drawing.Point(52, 10);
+            this.tbg1.Location = new System.Drawing.Point(68, 10);
             this.tbg1.Name = "tbg1";
             this.tbg1.Size = new System.Drawing.Size(43, 20);
             this.tbg1.TabIndex = 21;
             // 
             // tbg3
             // 
-            this.tbg3.Location = new System.Drawing.Point(52, 54);
+            this.tbg3.Location = new System.Drawing.Point(68, 54);
             this.tbg3.Name = "tbg3";
             this.tbg3.Size = new System.Drawing.Size(43, 20);
             this.tbg3.TabIndex = 22;
             // 
             // tbg2
             // 
-            this.tbg2.Location = new System.Drawing.Point(52, 32);
+            this.tbg2.Location = new System.Drawing.Point(68, 32);
             this.tbg2.Name = "tbg2";
             this.tbg2.Size = new System.Drawing.Size(43, 20);
             this.tbg2.TabIndex = 23;
@@ -231,7 +231,7 @@
             this.groupBox1.Controls.Add(this.greenRB);
             this.groupBox1.Controls.Add(this.blackRB);
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.groupBox1.Location = new System.Drawing.Point(196, -4);
+            this.groupBox1.Location = new System.Drawing.Point(212, -4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(73, 111);
             this.groupBox1.TabIndex = 24;
@@ -241,7 +241,7 @@
             // 
             this.editBtn.Location = new System.Drawing.Point(7, 78);
             this.editBtn.Name = "editBtn";
-            this.editBtn.Size = new System.Drawing.Size(183, 24);
+            this.editBtn.Size = new System.Drawing.Size(199, 24);
             this.editBtn.TabIndex = 25;
             this.editBtn.Text = "Edit HotKeys";
             this.editBtn.UseVisualStyleBackColor = true;
@@ -251,7 +251,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(276, 135);
+            this.ClientSize = new System.Drawing.Size(294, 135);
             this.Controls.Add(this.editBtn);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tbg2);
@@ -268,8 +268,8 @@
             this.Controls.Add(this.applyBtn);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(292, 173);
-            this.MinimumSize = new System.Drawing.Size(292, 173);
+            this.MaximumSize = new System.Drawing.Size(310, 173);
+            this.MinimumSize = new System.Drawing.Size(310, 173);
             this.Name = "Settings";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Settings";
