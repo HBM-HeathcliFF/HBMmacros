@@ -22,7 +22,7 @@ namespace HBMmacros
                 if (e.KeyCode.ToString() != "ControlKey" && e.KeyCode.ToString() != "Menu"
                     && e.KeyCode.ToString() != "ShiftKey")
                 {
-                    selectedTB.Text += e.KeyCode;
+                    selectedTB.Text += e.KeyCode.ToString();
                     e.SuppressKeyPress = true;
                     KeyDown -= tb_KeyDown;
                 }

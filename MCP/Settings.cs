@@ -43,6 +43,11 @@ namespace HBMmacros
             if (rememberCB.Checked)
             {
                 RegistryKey reg = Registry.CurrentUser.CreateSubKey("Software\\HBMmacros");
+                for (int i = 0; i < 4; i++)
+                {
+                    reg.SetValue($"Modifier{i}", Program.modifiers[i]);
+                    reg.SetValue($"Key{i}", Program.keys[i]);
+                }
                 reg.SetValue("Delay", Program.delay);
                 reg.SetValue("g1AmmoCount", Program.g1AmmoCount);
                 reg.SetValue("g2AmmoCount", Program.g2AmmoCount);
@@ -62,7 +67,7 @@ namespace HBMmacros
                     Registry.CurrentUser.DeleteSubKeyTree("Software\\HBMmacros");
                 }
                 catch (Exception) { }
-            }                
+            }
             Close();
         }
 

@@ -11,6 +11,8 @@ namespace HBMmacros
         static int Main (string[] args) {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            modifiers = new string[4];
+            keys = new int[4];
 
             var frm = new frmMain();
             frm.FormClosed += (s, e) => 
@@ -21,10 +23,6 @@ namespace HBMmacros
                 }
             };
 
-            HotKeys.Register(frm, 0, Modifiers.ALT, Keys.D1);
-            HotKeys.Register(frm, 1, Modifiers.ALT, Keys.D2);
-            HotKeys.Register(frm, 2, Modifiers.ALT, Keys.D3);
-            HotKeys.Register(frm, 3, Modifiers.ALT, Keys.D4);
             using (NotifyIcon icon = new NotifyIcon())
             {
                 icon.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
@@ -77,6 +75,11 @@ namespace HBMmacros
                 {
                     using (var key = Registry.CurrentUser.OpenSubKey("Software\\HBMmacros"))
                     {
+                        for (int i = 0; i < 4; i++)
+                        {
+                            modifiers[i] = key.GetValue($"Modifier{i}").ToString();
+                            keys[i] = (int)key.GetValue($"Key{i}");
+                        }
                         delay = (int)key.GetValue("Delay");
                         g1AmmoCount = (int)key.GetValue("g1AmmoCount");
                         g2AmmoCount = (int)key.GetValue("g2AmmoCount");
@@ -93,6 +96,11 @@ namespace HBMmacros
                 }
                 catch (Exception)
                 {
+                    for (int i = 0, j = 49; i < 4; i++, j++)
+                    {
+                        modifiers[i] = "ALT";
+                        keys[i] = j;
+                    }
                     delay = 50;
                     g1AmmoCount = 10;
                     g2AmmoCount = 10;
@@ -102,6 +110,22 @@ namespace HBMmacros
                     isMask = false;
                     numberMask = 1;
                     isSaved = false;
+                }
+
+                for (int i = 0; i < 4; i++)
+                {
+                    switch (modifiers[i])
+                    {
+                        case "ALT":
+                            HotKeys.Register(frm, i, Modifiers.ALT, (Keys)keys[i]);
+                            break;
+                        case "CTRL":
+                            HotKeys.Register(frm, i, Modifiers.CONTROL, (Keys)keys[i]);
+                            break;
+                        case "SHIFT":
+                            HotKeys.Register(frm, i, Modifiers.SHIFT, (Keys)keys[i]);
+                            break;
+                    }
                 }
 
                 icon.Visible = true;
@@ -120,7 +144,7 @@ namespace HBMmacros
         public static bool isMask { get; set; }
         public static int numberMask { get; set; }
         public static bool isSaved { get; set; }
-        public static uint Modifier { get; set; }
-        public static Keys Key { get; set; }
+        public static string[] modifiers { get; set; }
+        public static int[] keys { get; set; }
     }
 }
