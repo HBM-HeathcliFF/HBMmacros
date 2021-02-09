@@ -70,5 +70,16 @@ namespace HBMmacros
             if (rememberCB.Checked) Program.isSaved = true;
             else Program.isSaved = false;
         }
+
+        private void editBtn_Click(object sender, EventArgs e)
+        {
+            Form Edit = new EditHotKeys();
+            Enabled = false;
+            Edit.Show();
+            Edit.FormClosed += (s1, e1) =>
+            {
+                Enabled = true;
+            };
+        }
     }
 }

@@ -48,6 +48,7 @@
             this.tbg3 = new System.Windows.Forms.TextBox();
             this.tbg2 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.editBtn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -236,11 +237,22 @@
             this.groupBox1.TabIndex = 24;
             this.groupBox1.TabStop = false;
             // 
+            // editBtn
+            // 
+            this.editBtn.Location = new System.Drawing.Point(7, 78);
+            this.editBtn.Name = "editBtn";
+            this.editBtn.Size = new System.Drawing.Size(183, 24);
+            this.editBtn.TabIndex = 25;
+            this.editBtn.Text = "Edit HotKeys";
+            this.editBtn.UseVisualStyleBackColor = true;
+            this.editBtn.Click += new System.EventHandler(this.editBtn_Click);
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(276, 135);
+            this.Controls.Add(this.editBtn);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tbg2);
             this.Controls.Add(this.tbg3);
@@ -289,5 +301,6 @@
         private System.Windows.Forms.TextBox tbg3;
         private System.Windows.Forms.TextBox tbg2;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button editBtn;
     }
 }
