@@ -31,12 +31,12 @@ namespace HBMmacros
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditHotKeys));
             this.label1 = new System.Windows.Forms.Label();
-            this.tbw1 = new System.Windows.Forms.TextBox();
             this.tbw2 = new System.Windows.Forms.TextBox();
+            this.tbhm = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tbw3 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.tbhm = new System.Windows.Forms.TextBox();
+            this.tbw1 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.applyBtn = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -52,23 +52,23 @@ namespace HBMmacros
             this.label1.TabIndex = 0;
             this.label1.Text = "Weapon 1:";
             // 
-            // tbw1
-            // 
-            this.tbw1.Location = new System.Drawing.Point(67, 7);
-            this.tbw1.Name = "tbw1";
-            this.tbw1.ReadOnly = true;
-            this.tbw1.Size = new System.Drawing.Size(73, 20);
-            this.tbw1.TabIndex = 1;
-            this.tbw1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // tbw2
             // 
-            this.tbw2.Location = new System.Drawing.Point(67, 28);
+            this.tbw2.Location = new System.Drawing.Point(67, 27);
             this.tbw2.Name = "tbw2";
             this.tbw2.ReadOnly = true;
             this.tbw2.Size = new System.Drawing.Size(73, 20);
-            this.tbw2.TabIndex = 3;
+            this.tbw2.TabIndex = 1;
             this.tbw2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // tbhm
+            // 
+            this.tbhm.Location = new System.Drawing.Point(67, 68);
+            this.tbhm.Name = "tbhm";
+            this.tbhm.ReadOnly = true;
+            this.tbhm.Size = new System.Drawing.Size(73, 20);
+            this.tbhm.TabIndex = 3;
+            this.tbhm.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label2
             // 
@@ -97,14 +97,14 @@ namespace HBMmacros
             this.label3.TabIndex = 4;
             this.label3.Text = "Weapon 3:";
             // 
-            // tbhm
+            // tbw1
             // 
-            this.tbhm.Location = new System.Drawing.Point(67, 69);
-            this.tbhm.Name = "tbhm";
-            this.tbhm.ReadOnly = true;
-            this.tbhm.Size = new System.Drawing.Size(73, 20);
-            this.tbhm.TabIndex = 7;
-            this.tbhm.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbw1.Location = new System.Drawing.Point(67, 6);
+            this.tbw1.Name = "tbw1";
+            this.tbw1.ReadOnly = true;
+            this.tbw1.Size = new System.Drawing.Size(73, 20);
+            this.tbw1.TabIndex = 7;
+            this.tbw1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label4
             // 
@@ -130,11 +130,11 @@ namespace HBMmacros
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.applyBtn);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.tbhm);
             this.panel1.Controls.Add(this.tbw1);
+            this.panel1.Controls.Add(this.tbw2);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.tbw3);
-            this.panel1.Controls.Add(this.tbw2);
+            this.panel1.Controls.Add(this.tbhm);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Location = new System.Drawing.Point(1, 0);
             this.panel1.Name = "panel1";
@@ -162,12 +162,12 @@ namespace HBMmacros
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox tbw1;
         private System.Windows.Forms.TextBox tbw2;
+        private System.Windows.Forms.TextBox tbhm;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tbw3;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox tbhm;
+        private System.Windows.Forms.TextBox tbw1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button applyBtn;
         private System.Windows.Forms.Panel panel1;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Linq;
+using Microsoft.Win32;
 
 namespace HBMmacros
 {
@@ -13,6 +14,7 @@ namespace HBMmacros
             InitializeComponent();
             ActiveControl = label1;
             KeyPreview = true;
+
             foreach (TextBox tb in panel1.Controls.OfType<TextBox>())
             {
                 tb.Click += (s, e) =>
@@ -21,6 +23,19 @@ namespace HBMmacros
                     selectedTB = tb;
                     tb.KeyDown += tb_KeyDown;
                 };
+            }
+
+            TextBox[] tbs = panel1.Controls.OfType<TextBox>().ToArray();
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 93; j++)
+                {
+                    if (Program.keys[i].ToString() == HotKeys.keyCodes[j, 0])
+                    {
+                        tbs[i].Text = $"{Program.modifiers[i]}+{HotKeys.keyCodes[j, 1]}";
+                        break;
+                    }
+                }
             }
         }
 
@@ -37,7 +52,14 @@ namespace HBMmacros
             if (e.KeyCode.ToString() != "ControlKey" && e.KeyCode.ToString() != "Menu"
                 && e.KeyCode.ToString() != "ShiftKey")
             {
-                selectedTB.Text += e.KeyCode.ToString(); //Плюсуем по кейкоду символ с библиотеки
+                for (int i = 0; i < 93; i++)
+                {
+                    if (e.KeyValue.ToString() == HotKeys.keyCodes[i, 0])
+                    {
+                        selectedTB.Text += HotKeys.keyCodes[i, 1];
+                        break;
+                    }
+                }
                 e.SuppressKeyPress = true;
                 KeyDown -= tb_KeyDown;
             }
@@ -45,7 +67,44 @@ namespace HBMmacros
 
         private void applyBtn_Click(object sender, EventArgs e)
         {
-
+            string[] modKey = new string[2];
+            TextBox[] tbs = panel1.Controls.OfType<TextBox>().ToArray();
+            for (int i = 0; i < 4; i++)
+            {
+                if (!tbs[i].Text.Contains("Num + "))
+                    modKey = tbs[i].Text.Split('+');
+                else
+                {
+                    modKey[0] = tbs[i].Text.Remove(tbs[i].Text.Length - 6);
+                    modKey[1] = "Num +";
+                }
+                Program.modifiers[i] = modKey[0];
+                for (int j = 0; j < 93; j++)
+                {
+                    if (modKey[1] == HotKeys.keyCodes[j, 1])
+                    {
+                        Program.keys[i] = Convert.ToInt32(HotKeys.keyCodes[j, 0]);
+                        break;
+                    }
+                }
+                RegistryKey reg = Registry.CurrentUser.CreateSubKey("Software\\HBMmacros");
+                reg.SetValue($"Modifier{i}", Program.modifiers[i]);
+                reg.SetValue($"Key{i}", Program.keys[i]);
+                HotKeys.Unregister(new frmMain(), i);
+                switch (Program.modifiers[i])
+                {
+                    case "Alt":
+                        HotKeys.Register(new frmMain(), i, Modifiers.ALT, (Keys)Program.keys[i]);
+                        break;
+                    case "Ctrl":
+                        HotKeys.Register(new frmMain(), i, Modifiers.CONTROL, (Keys)Program.keys[i]);
+                        break;
+                    case "Shift":
+                        HotKeys.Register(new frmMain(), i, Modifiers.SHIFT, (Keys)Program.keys[i]);
+                        break;
+                }
+            }
+            Close();
         }
     }
 }

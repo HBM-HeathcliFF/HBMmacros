@@ -98,7 +98,7 @@ namespace HBMmacros
                 {
                     for (int i = 0, j = 49; i < 4; i++, j++)
                     {
-                        modifiers[i] = "ALT";
+                        modifiers[i] = "Alt";
                         keys[i] = j;
                     }
                     delay = 50;
@@ -116,13 +116,13 @@ namespace HBMmacros
                 {
                     switch (modifiers[i])
                     {
-                        case "ALT":
+                        case "Alt":
                             HotKeys.Register(frm, i, Modifiers.ALT, (Keys)keys[i]);
                             break;
-                        case "CTRL":
+                        case "Ctrl":
                             HotKeys.Register(frm, i, Modifiers.CONTROL, (Keys)keys[i]);
                             break;
-                        case "SHIFT":
+                        case "Shift":
                             HotKeys.Register(frm, i, Modifiers.SHIFT, (Keys)keys[i]);
                             break;
                     }
