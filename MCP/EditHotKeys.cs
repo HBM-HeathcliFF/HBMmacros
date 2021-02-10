@@ -8,6 +8,7 @@ namespace HBMmacros
     public partial class EditHotKeys : Form
     {
         TextBox selectedTB = new TextBox();
+        string tbText = "";
 
         public EditHotKeys()
         {
@@ -19,9 +20,22 @@ namespace HBMmacros
             {
                 tb.Click += (s, e) =>
                 {
+                    tbText = tb.Text;
                     tb.Text = "";
                     selectedTB = tb;
                     tb.KeyDown += tb_KeyDown;
+                };
+                tb.LostFocus += (s, e) =>
+                {
+                    int qRepeat = 0;
+                    for (int i = 0; i < 4; i++)
+                    {
+                        if (tb.Text == panel1.Controls.OfType<TextBox>().ToArray()[i].Text)
+                            qRepeat++;
+                    }
+                    if (tb.Text == "Ctrl+" || tb.Text == "Alt+" ||
+                        tb.Text == "Shift+" || tb.Text == "" || qRepeat >= 2)
+                        tb.Text = tbText;
                 };
             }
 
@@ -90,19 +104,6 @@ namespace HBMmacros
                 RegistryKey reg = Registry.CurrentUser.CreateSubKey("Software\\HBMmacros");
                 reg.SetValue($"Modifier{i}", Program.modifiers[i]);
                 reg.SetValue($"Key{i}", Program.keys[i]);
-                HotKeys.Unregister(new frmMain(), i);
-                switch (Program.modifiers[i])
-                {
-                    case "Alt":
-                        HotKeys.Register(new frmMain(), i, Modifiers.ALT, (Keys)Program.keys[i]);
-                        break;
-                    case "Ctrl":
-                        HotKeys.Register(new frmMain(), i, Modifiers.CONTROL, (Keys)Program.keys[i]);
-                        break;
-                    case "Shift":
-                        HotKeys.Register(new frmMain(), i, Modifiers.SHIFT, (Keys)Program.keys[i]);
-                        break;
-                }
             }
             Close();
         }

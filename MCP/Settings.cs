@@ -1,11 +1,19 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace HBMmacros
 {
     public partial class Settings : Form
     {
+        [DllImport("user32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        static extern bool RegisterHotKey(IntPtr hWnd, int Id, Modifiers fsModifiers, Keys vk);
+
+        [DllImport("user32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        static extern bool UnregisterHotKey(IntPtr hWnd, int Id);
         public Settings()
         {
             InitializeComponent();
@@ -80,10 +88,29 @@ namespace HBMmacros
         private void editBtn_Click(object sender, EventArgs e)
         {
             Form Edit = new EditHotKeys();
+            for (int i = 0; i < 4; i++)
+            {
+                UnregisterHotKey(Program.fHandle, i);
+            }
             Enabled = false;
             Edit.Show();
             Edit.FormClosed += (s1, e1) =>
             {
+                for (int i = 0; i < 4; i++)
+                {
+                    switch (Program.modifiers[i])
+                    {
+                        case "Alt":
+                            RegisterHotKey(Program.fHandle, i, Modifiers.ALT, (Keys)Program.keys[i]);
+                            break;
+                        case "Ctrl":
+                            RegisterHotKey(Program.fHandle, i, Modifiers.CONTROL, (Keys)Program.keys[i]);
+                            break;
+                        case "Shift":
+                            RegisterHotKey(Program.fHandle, i, Modifiers.SHIFT, (Keys)Program.keys[i]);
+                            break;
+                    }
+                }
                 Enabled = true;
             };
         }

@@ -2,11 +2,20 @@
 using System.Drawing;
 using Microsoft.Win32;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace HBMmacros
 {
     static class Program
     {
+        [DllImport("user32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        static extern bool RegisterHotKey(IntPtr hWnd, int Id, Modifiers fsModifiers, Keys vk);
+
+        [DllImport("user32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        static extern bool UnregisterHotKey(IntPtr hWnd, int Id);
+
         [STAThread]
         static int Main (string[] args) {
             Application.EnableVisualStyles();
@@ -14,12 +23,13 @@ namespace HBMmacros
             modifiers = new string[4];
             keys = new int[4];
 
-            var frm = new frmMain();
+            Form frm = new frmMain();
+            fHandle = frm.Handle;
             frm.FormClosed += (s, e) => 
             {
                 for (int i = 0; i < 4; i++)
                 {
-                    HotKeys.Unregister(frm, i);
+                    UnregisterHotKey(fHandle, i);
                 }
             };
 
@@ -117,13 +127,13 @@ namespace HBMmacros
                     switch (modifiers[i])
                     {
                         case "Alt":
-                            HotKeys.Register(frm, i, Modifiers.ALT, (Keys)keys[i]);
+                            RegisterHotKey(fHandle, i, Modifiers.ALT, (Keys)keys[i]);
                             break;
                         case "Ctrl":
-                            HotKeys.Register(frm, i, Modifiers.CONTROL, (Keys)keys[i]);
+                            RegisterHotKey(fHandle, i, Modifiers.CONTROL, (Keys)keys[i]);
                             break;
                         case "Shift":
-                            HotKeys.Register(frm, i, Modifiers.SHIFT, (Keys)keys[i]);
+                            RegisterHotKey(fHandle, i, Modifiers.SHIFT, (Keys)keys[i]);
                             break;
                     }
                 }
@@ -146,5 +156,6 @@ namespace HBMmacros
         public static bool isSaved { get; set; }
         public static string[] modifiers { get; set; }
         public static int[] keys { get; set; }
+        public static IntPtr fHandle { get; set; }
     }
 }
