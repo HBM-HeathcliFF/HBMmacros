@@ -63,8 +63,13 @@ namespace HBMmacros
                         }),
                         new MenuItem("Settings", (s, e) =>
                         {
-                            Form f = new Settings();
-                            f.Show();
+                            Form settings = new Settings();
+                            settings.Show();
+                        }),
+                        new MenuItem("Help", (s, e) =>
+                        {
+                            Form help = new Help();
+                            help.Show();
                         }),
                         new MenuItem("Exit", (s, e) => Application.Exit())
                     });
