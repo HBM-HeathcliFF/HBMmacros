@@ -42,14 +42,7 @@ namespace HBMmacros
             TextBox[] tbs = panel1.Controls.OfType<TextBox>().ToArray();
             for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < 93; j++)
-                {
-                    if (Program.keys[i].ToString() == HotKeys.keyCodes[j, 0])
-                    {
-                        tbs[i].Text = $"{Program.modifiers[i]}+{HotKeys.keyCodes[j, 1]}";
-                        break;
-                    }
-                }
+                tbs[i].Text = $"{Program.modifiers[i]}+{HotKeys.FindKeyValue(Program.keys[i].ToString())}";
             }
         }
 
@@ -66,14 +59,7 @@ namespace HBMmacros
             if (e.KeyCode.ToString() != "ControlKey" && e.KeyCode.ToString() != "Menu"
                 && e.KeyCode.ToString() != "ShiftKey")
             {
-                for (int i = 0; i < 93; i++)
-                {
-                    if (e.KeyValue.ToString() == HotKeys.keyCodes[i, 0])
-                    {
-                        selectedTB.Text += HotKeys.keyCodes[i, 1];
-                        break;
-                    }
-                }
+                selectedTB.Text += HotKeys.FindKeyValue(e.KeyValue.ToString());
                 e.SuppressKeyPress = true;
                 KeyDown -= tb_KeyDown;
             }
@@ -93,14 +79,7 @@ namespace HBMmacros
                     modKey[1] = "Num +";
                 }
                 Program.modifiers[i] = modKey[0];
-                for (int j = 0; j < 93; j++)
-                {
-                    if (modKey[1] == HotKeys.keyCodes[j, 1])
-                    {
-                        Program.keys[i] = Convert.ToInt32(HotKeys.keyCodes[j, 0]);
-                        break;
-                    }
-                }
+                Program.keys[i] = HotKeys.FindKeyCode(modKey[1]);
                 RegistryKey reg = Registry.CurrentUser.CreateSubKey("Software\\HBMmacros");
                 reg.SetValue($"Modifier{i}", Program.modifiers[i]);
                 reg.SetValue($"Key{i}", Program.keys[i]);

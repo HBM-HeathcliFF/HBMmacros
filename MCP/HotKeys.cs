@@ -13,7 +13,27 @@ namespace HBMmacros
 
     static class HotKeys
     {
-        public static string[,] keyCodes = new string[,]
+        public static int FindKeyCode(string source)
+        {
+            for (int j = 0; j < 93; j++)
+            {
+                if (source == keyCodes[j, 1])
+                    return Convert.ToInt32(keyCodes[j, 0]);
+            }
+            return 0;
+        }
+
+        public static string FindKeyValue(string source)
+        {
+            for (int i = 0; i < 93; i++)
+            {
+                if (source == keyCodes[i, 0])
+                    return keyCodes[i, 1];
+            }
+            return "";
+        }
+
+        private static readonly string[,] keyCodes = new string[,]
         {
             {"8", "BackSpace"},
             {"9", "Tab"},
